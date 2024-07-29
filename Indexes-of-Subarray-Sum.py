@@ -13,12 +13,15 @@ Output: -1
 Explanation: There is no subarray with sum 2'''
 
 class Solution:
-
-	def rowWithMax1s(self,arr):
-	    maxi=0
-	    index=-1
-	    for i in range(len(arr)):
-	        if arr[i].count(1)>maxi:
-	            index=i
-	            maxi=arr[i].count(1)
-	    return index
+    def subArraySum(self,arr, n, s):
+        start=0
+        end=0
+        sume=0
+        for end in range(n):
+            sume+=arr[end]
+            while(sume>s and start<end):
+                sume-=arr[start]
+                start+=1
+            if sume==s:
+                return [start+1,end+1]
+        return [-1]
