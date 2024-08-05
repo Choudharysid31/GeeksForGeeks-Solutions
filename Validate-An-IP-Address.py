@@ -13,11 +13,13 @@ Explanation: 5555..555 is not a valid. IPv4 address, as the middle two portions 
 Expected Time Complexity: O(n)
 Expected Auxiliary Space: O(1)'''
 
-    def isValid(self, str):
+       def isValid(self, str):
         ip=str.split(".")
+        if len(ip)<4:
+            return False
         for i in ip:
             if len(i)>3:
                 return False
             if int(i)<0 or int(i)>255:
                 return False
-        return True 
+        return True  
