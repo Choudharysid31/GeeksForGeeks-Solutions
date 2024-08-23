@@ -10,16 +10,24 @@ Explanation:
 0s 1s and 2s are segregated 
 into ascending order.'''
 
+
 class Solution:
     def sort012(self,arr,n):
-        arr.sort()
+        zero=0
+        two=n-1
+        ptr=0
+        while ptr<=two:
+            if arr[ptr]==0:
+                arr[zero],arr[ptr]=arr[ptr],arr[zero]
+                zero+=1
+                ptr+=1
+            elif arr[ptr]==2:
+                arr[two],arr[ptr]=arr[ptr],arr[two]
+                two-=1
+            else:
+                ptr+=1
         return arr
-if __name__=="__main__":
-  t=int(input())
-  arr=[int(x) for x in input().strip().split()]
-  ob=Solution()
-  ob.sort12(arr,n)
-  for i in arr:
-    print(i, end='')
-  print()
+        # code here
+
+
   
