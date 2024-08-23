@@ -17,4 +17,6 @@ class Solution:
             for j in range(i+1,len(str1)+1):
                 if str1[i:j] in str2:
                     large=max(len(str1[i:j]),large)
+                else:
+                    break
         return large
