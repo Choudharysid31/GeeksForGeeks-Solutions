@@ -18,7 +18,7 @@ class Solution:
     def find(self, arr, n, x):
         left=0
         right=n
-        while left<right:
+        while left<=right:
             mid=left+(right-left)//2
             if arr[mid]==x:
                 start=mid-1
