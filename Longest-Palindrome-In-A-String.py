@@ -16,10 +16,25 @@ class Solution:
     def longestPalin(self, S):
         if len(S)<2:
             return S
-        large=""
-        for i in range(len(S)-1):
-            for j in range(i+1,len(S)+1):
-                m=S[i:j]
-                if (len(large)<len(m)) and (m==m[::-1]):
-                    large=m
+        large=S[0]
+        maxi=0
+        for i in range(len(S)):
+            start=i
+            end=i+1
+            while start>=0 and end<len(S) and S[start]==S[end]:
+                if maxi<(end-start+1):
+                    large=S[start:end+1]
+                    maxi=end-start+1
+                start-=1
+                end+=1
+            
+        for i in range(len(S)):
+            start=i-1
+            end=i+1
+            while start>=0 and end<len(S) and S[start]==S[end]:
+                if maxi<(end-start+1):
+                    large=S[start:end+1]
+                    maxi=end-start+1
+                start-=1
+                end+=1
         return large
