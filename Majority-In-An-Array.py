@@ -12,11 +12,17 @@ Explanation: Since, 3 is present more than N/2 times, so it is the majority elem
 
 
 class Solution:
-    def majorityElement(self, A, N):
-        count=[0]*(max(A)+1)
-        for i in A:
-            count[i]+=1
-        for j in range(len(count)):
-            if count[j]>N//2:
-                return j
+    def majorityElement(self, arr):
+        major=arr[0]
+        count=1
+        for i in range(1,len(arr)):
+            if (major==arr[i]):
+                count+=1
+            else:
+                count-=1
+            if count==0:
+                major=arr[i]
+                count=1
+        if arr.count(major)>len(arr)//2:
+            return major
         return -1
