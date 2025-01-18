@@ -21,3 +21,14 @@ Expected Auxiliary Space: O(1)'''
                 return i+1
             new+=arr[i]
         return -1
+
+
+   class Solution:
+    def findEquilibrium(self, arr):
+        left=sum(arr)
+        right=0
+        for i in range(len(arr)):
+            if left-right-arr[i]==right:
+                return i
+            right+=arr[i]
+        return -1
