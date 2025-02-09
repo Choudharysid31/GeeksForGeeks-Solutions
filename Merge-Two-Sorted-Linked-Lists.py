@@ -8,10 +8,15 @@ Output: 1 -> 1 -> 2 -> 4'''
 
 class Solution:
     def sortedMerge(self,head1, head2):
-        new_node=Node(-1)
+        if head1.data>head2.data:
+            new_node=head2
+            curr1=head1
+            curr2=head2.next
+        else:
+            new_node=head1
+            curr1=head1.next
+            curr2=head2
         temp=new_node
-        curr1=head1
-        curr2=head2
         while curr1 and curr2:
             if curr1.data<=curr2.data:
                 temp.next=curr1
@@ -29,5 +34,5 @@ class Solution:
             temp.next=curr2
             curr2=curr2.next
             temp=temp.next
-        return new_node.next
+        return new_node
 
