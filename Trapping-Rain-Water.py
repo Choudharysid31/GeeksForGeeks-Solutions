@@ -23,12 +23,19 @@ class Solution:
         righty=arr[-1]
         res=0
         while left<=right:
+            
             if (lefty<righty):
-                res+=max(0,lefty-arr[left])
+                
                 lefty=max(lefty,arr[left])
+                res+=lefty-arr[left]
+
                 left+=1
+            
             else:
-                res+=max(0,righty-arr[right])
+
                 righty=max(righty,arr[right])
+                res+=righty-arr[right]
+                
                 right-=1
+        
         return res
