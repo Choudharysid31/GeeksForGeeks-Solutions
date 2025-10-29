@@ -16,8 +16,24 @@ Constraints:
 
 from itertools import combinations
 class Solution:
-    def combinationSum(self, n, k):
+    # def combinationSum(self, n, k):
         
-        avail=[i for i in range(1,10)]
-        return [list(arr) for arr in list(combinations(avail,k)) if sum(arr)==n]
-    
+    #     avail=[i for i in range(1,10)]
+    #     return [list(arr) for arr in list(combinations(avail,k)) if sum(arr)==n]
+
+    def backtrack(self, tot,dig,arr,ans,count):
+        
+        if len(arr)==count and tot==0:
+            ans.append(arr[:])
+        if tot<=0 or dig==0 or len(arr)>count:
+            return
+        arr.append(dig)
+        
+        self.backtrack(tot-dig,dig-1,arr,ans,count)
+        arr.pop()
+        self.backtrack(tot,dig-1,arr,ans,count)
+        
+    def combinationSum(self, n, k):
+        ans=[]
+        self.backtrack(n,9,[],ans,k)
+        return ans
